@@ -51,7 +51,8 @@ const App=()=>{
              console.log("Setting localstorage")
              await AsyncStorage.setItem('@Meta',JSON.stringify({uris:uris}))}
       	   let val=await AsyncStorage.getItem('@Meta')
-           setURIS(val)
+	   if(val.uris!=undefined)
+		 setURIS(val.uris)
       }
          getItem()
       },[uris])
@@ -60,7 +61,7 @@ const App=()=>{
 		headerShown:true,
 		headerTitleAlign:'center',
 		}
-
+	
 	return(
 	        <NavigationContainer>
 		   <NativeBaseProvider>
