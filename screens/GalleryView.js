@@ -15,6 +15,7 @@ import {
 	Modal
 } from 'native-base'
 import Gallery from 'react-native-image-gallery'
+import FastImage from 'react-native-fast-image'
 import {Global} from './../App.js'
 import getImages from './../utils/getImages.js'
 
@@ -32,8 +33,15 @@ const GalleryView=()=>{
 			     <TouchableHighlight onPress={()=>{
 				     		showModal(true)
 				     		 setURI(v.item.uri)}}>
-			     <Image m='0' alt='no image' size='xl' resizeMode='cover' 
-			      source={{uri:String(v.item.uri)}}/>
+				  {/*<Image m='0' alt='no image' size='xl' resizeMode='cover' 
+			      source={{uri:String(v.item.uri)}}/>*/}
+		                <FastImage style={{height:200,width:200}}
+				 source={{
+					 uri:String(v.item.uri),
+					 priority: FastImage.priority.normal,
+				         cache:FastImage.cacheControl.web
+				 	 }}
+				 resizeMode={FastImage.resizeMode.cover}/>
 			     </TouchableHighlight>)}}
 			initialNumtoRender={25}
 			numColumns={3}
